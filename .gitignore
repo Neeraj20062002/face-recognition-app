@@ -1,0 +1,25 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Large data
+dataset/
+dataset_backup_*/
+dataset_aug/
+
+# Models and results
+*.npy
+*.joblib
+*.h5
+results/
+models/
+
+# Streamlit cache
+.streamlit/
+.idea/
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
