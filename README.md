@@ -1,45 +1,92 @@
 # 🤖 Face Recognition App (PCA + SVM + Streamlit)
 
-[![Streamlit](https://img.shields.io/badge/Streamlit-Ready-brightgreen?logo=streamlit)](#)
-[![Python](https://img.shields.io/badge/Python-3.13-blue?logo=python)](#)
-[![OpenCV](https://img.shields.io/badge/OpenCV-4.x-orange?logo=opencv)](#)
-[![License](https://img.shields.io/badge/License-MIT-lightgrey)](#)
+### 🧠 Overview
 
-A face recognition system built using **Principal Component Analysis (PCA)** for dimensionality reduction  
-and **Support Vector Machine (SVM)** for classification.  
-It includes an interactive **Streamlit GUI** for real-time face predictions, image uploads, and webcam input.
-
----
-
-## 📸 Demo Overview
-
-This project demonstrates how to:
-
-- Extract **Eigenfaces** using PCA
-- Train an **SVM classifier** for facial recognition
-- Use **Streamlit** for a real-time, interactive web dashboard
-- Visualize **model accuracy, confusion matrix, and dataset stats**
+A face recognition system using **Principal Component Analysis (PCA)** for dimensionality reduction and **Support Vector Machine (SVM)** for classification.  
+Includes an interactive **Streamlit GUI** for uploads, webcam, and live predictions.
 
 ---
 
 ## ⚙️ Features
 
-✅ PCA-based Eigenfaces generation  
-✅ SVM classification with confidence threshold  
-✅ Real-time prediction via upload or webcam  
-✅ Accuracy charts and class distribution visualization  
-✅ Prediction logging (CSV)  
-✅ Clean, modular project structure
-
----
-
-## 🧠 Tech Stack
-
-- **Language:** Python 3.13
-- **Libraries:** OpenCV, scikit-learn, NumPy, Streamlit, Plotly, Pandas
-- **Framework:** Streamlit
-- **Model:** PCA + SVM
+- PCA-based Eigenfaces generation
+- SVM classification with adjustable confidence threshold
+- Real-time prediction (upload / webcam)
+- Accuracy charts and dataset visualization
+- Prediction logging and reports
+- Modular, well-structured Python code
 
 ---
 
 ## 🧩 Project Structure
+
+face_recognition_app/
+│
+├── dataset/ # Training images
+├── models/ # Saved models (.joblib, .h5)
+├── results/ # PCA outputs, charts, logs
+├── utils/ # Preprocessing, PCA, augmentation helpers
+│
+├── demo_app.py # Streamlit GUI
+├── train_svm.py # PCA + SVM trainer
+├── svm_predict.py # CLI predictor
+├── requirements.txt # Dependencies
+└── README.md # Documentation
+
+yaml
+Copy code
+
+---
+
+## 🚀 Run Locally
+
+### 1️⃣ Clone the repo
+
+```bash
+git clone https://github.com/Neeraj20062002/face-recognition-app.git
+cd face-recognition-app
+2️⃣ Install requirements
+bash
+Copy code
+pip install -r requirements.txt
+3️⃣ Start Streamlit app
+bash
+Copy code
+streamlit run demo_app.py
+4️⃣ (Optional) Retrain model
+bash
+Copy code
+python utils/preprocessing.py
+python utils/pca_module.py
+python train_svm.py
+📊 Model Summary
+Metric	Value
+Accuracy	97.5 % (SVM)
+PCA Components	10
+Classes	modi · prabhas · robert_dowyne
+Dataset	Augmented (100 images)
+
+🖼 Example
+yaml
+Copy code
+python svm_predict.py "dataset/modi/1_orig.jpg"
+→ Predicted: modi | Confidence: 93.3 %
+Streamlit Dashboard
+
+Upload or capture image
+
+View prediction + confidence
+
+Interactive accuracy & class plots
+
+🧾 Reports
+results/svm_report.txt → Evaluation
+
+results/training_history.png → Accuracy curve
+
+results/predictions_log.csv → Logs
+
+👨‍💻 Developer
+Neeraj Pallikonda — ISTUDIO Internship 2025
+💡 Focus: AI · ML · Computer Vision
+```
