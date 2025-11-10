@@ -18,7 +18,7 @@ Includes an interactive **Streamlit GUI** for uploads, webcam, and live predicti
 
 ---
 
-## 🧩 Project Structure
+## 📂 Project Structure
 
 face_recognition_app/
 │
@@ -26,6 +26,10 @@ face_recognition_app/
 ├── models/ # Saved models (.joblib, .h5)
 ├── results/ # PCA outputs, charts, logs
 ├── utils/ # Preprocessing, PCA, augmentation helpers
+│ ├── preprocessing.py
+│ ├── pca_module.py
+│ ├── evaluation.py
+│ └── augment_dataset.py
 │
 ├── demo_app.py # Streamlit GUI
 ├── train_svm.py # PCA + SVM trainer
@@ -53,12 +57,6 @@ pip install -r requirements.txt
 bash
 Copy code
 streamlit run demo_app.py
-4️⃣ (Optional) Retrain model
-bash
-Copy code
-python utils/preprocessing.py
-python utils/pca_module.py
-python train_svm.py
 📊 Model Summary
 Metric	Value
 Accuracy	97.5 % (SVM)
@@ -67,7 +65,7 @@ Classes	modi · prabhas · robert_dowyne
 Dataset	Augmented (100 images)
 
 🖼 Example
-yaml
+bash
 Copy code
 python svm_predict.py "dataset/modi/1_orig.jpg"
 → Predicted: modi | Confidence: 93.3 %
@@ -89,4 +87,5 @@ results/predictions_log.csv → Logs
 👨‍💻 Developer
 Neeraj Pallikonda — ISTUDIO Internship 2025
 💡 Focus: AI · ML · Computer Vision
+📫 GitHub Profile
 ```
