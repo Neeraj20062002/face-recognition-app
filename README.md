@@ -20,28 +20,28 @@ Includes an interactive **Streamlit GUI** for uploads, webcam, and live predicti
 
 ## 📂 Project Structure
 
-face_recognition_app/
-│
-├── dataset/
-│ └── Training images
-│
-├── models/
-│ └── Saved models (.joblib, .h5)
-│
-├── results/
-│ └── PCA outputs, charts, logs
-│
-├── utils/
-│ ├── preprocessing.py
-│ ├── pca_module.py
-│ ├── evaluation.py
-│ └── augment_dataset.py
-│
-├── demo_app.py # Streamlit GUI
-├── train_svm.py # PCA + SVM trainer
-├── svm_predict.py # CLI predictor
-├── requirements.txt # Dependencies
-└── README.md # Documentation
+    face_recognition_app/
+    │
+    ├── dataset/
+    │   └── Training images
+    │
+    ├── models/
+    │   └── Saved models (.joblib, .h5)
+    │
+    ├── results/
+    │   └── PCA outputs, charts, logs
+    │
+    ├── utils/
+    │   ├── preprocessing.py
+    │   ├── pca_module.py
+    │   ├── evaluation.py
+    │   └── augment_dataset.py
+    │
+    ├── demo_app.py             # Streamlit GUI
+    ├── train_svm.py            # PCA + SVM trainer
+    ├── svm_predict.py          # CLI predictor
+    ├── requirements.txt        # Dependencies
+    └── README.md               # Documentation
 
 ---
 
