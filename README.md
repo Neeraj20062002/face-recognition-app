@@ -69,23 +69,17 @@ bash
 Copy code
 python svm_predict.py "dataset/modi/1_orig.jpg"
 → Predicted: modi | Confidence: 93.3 %
-Streamlit Dashboard
+
+Streamlit Dashboard :
 
 Upload or capture image
-
 View prediction + confidence
-
 Interactive accuracy & class plots
 
-🧾 Reports
+🧾 Reports :
+
 results/svm_report.txt → Evaluation
-
 results/training_history.png → Accuracy curve
-
 results/predictions_log.csv → Logs
 
-👨‍💻 Developer
-Neeraj Pallikonda — ISTUDIO Internship 2025
-💡 Focus: AI · ML · Computer Vision
-📫 GitHub Profile
 ```
