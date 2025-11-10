@@ -44,9 +44,8 @@ Copy code
 
 ## 🚀 Run Locally
 
-### 1️⃣ Clone the repo
-
 ```bash
+1️⃣ Clone the repo
 git clone https://github.com/Neeraj20062002/face-recognition-app.git
 cd face-recognition-app
 2️⃣ Install requirements
