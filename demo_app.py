@@ -193,6 +193,16 @@ with tab3:
     else:
         st.info("Confusion matrix CSV not found yet (optional file).")
 
+# ============================
+# ℹ️ Model Information Footer
+# ============================
 st.divider()
-st.caption("💡 Tip: Adjust PROB_THRESHOLD in code to make predictions stricter or more flexible.")
-st.caption("Developed by Neeraj · ISTUDIO Internship · 2025")
+st.subheader("📊 Model Information")
+
+with st.expander("Show Model Details"):
+    st.write("**Model Type:** PCA + SVM")
+    st.write("**Accuracy:** 97.5 % (evaluated on 100 images)")
+    st.write("**PCA Components Used:** 10")
+    st.write("**Classes:** modi · prabhas · robert_dowyne")
+    st.write("**Dataset:** Augmented facial dataset (100 images total)")
+    st.caption("Last trained on: 2025-11-09")
