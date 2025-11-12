@@ -1,0 +1,11 @@
+# Core dependencies for Face Recognition App (PCA + SVM + Streamlit)
+streamlit>=1.40.0
+numpy>=1.26.0
+pandas>=2.2.0
+scikit-learn>=1.5.0
+opencv-python>=4.9.0
+plotly>=5.22.0
+joblib>=1.3.0
+
+# Optional (for data visualization and logging)
+matplotlib>=3.9.0
