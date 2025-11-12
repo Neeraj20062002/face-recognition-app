@@ -5,6 +5,8 @@ import cv2
 import os
 import pandas as pd
 import plotly.express as px
+import csv
+import time
 from datetime import datetime
 
 # ============================
@@ -16,6 +18,31 @@ PCA_PATH = "pca_model.joblib"
 LABEL_MAP_PATH = "label_map.json"
 PROB_THRESHOLD = 0.45  # lower = less strict; higher = more cautious
 IMG_SIZE = (100, 100)
+
+# ensure results/dataset folders exist (defensive)
+os.makedirs("results", exist_ok=True)
+os.makedirs("dataset", exist_ok=True)
+
+# -----------------------------
+# Prediction logging helper
+# -----------------------------
+def ensure_results():
+    os.makedirs("results", exist_ok=True)
+
+def log_prediction(input_name: str, pred_name: str, prob: float):
+    """
+    Append a prediction row to results/predictions_log.csv
+    Columns: timestamp, input, prediction, prob
+    """
+    ensure_results()
+    log_path = os.path.join("results", "predictions_log.csv")
+    header_needed = not os.path.exists(log_path)
+    ts = time.strftime("%Y-%m-%d %H:%M:%S")
+    with open(log_path, "a", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        if header_needed:
+            writer.writerow(["timestamp", "input", "prediction", "prob"])
+        writer.writerow([ts, input_name, pred_name, f"{prob:.4f}"])
 
 # ============================
 # LOAD MODELS (robust)
@@ -117,6 +144,11 @@ with tab1:
                     st.success(f"**Prediction:** {name}")
                     st.metric(label="Confidence", value=f"{prob*100:.2f}%")
                     st.caption(f"Predicted label index: {idx}")
+
+                    # log the prediction
+                    input_name = getattr(uploaded, "name", "uploaded_image")
+                    log_prediction(input_name, name, prob)
+
                 except Exception as e:
                     st.error(f"Prediction error: {e}")
 
@@ -136,6 +168,11 @@ with tab2:
                     st.success(f"**Prediction:** {name}")
                     st.metric(label="Confidence", value=f"{prob*100:.2f}%")
                     st.caption(f"Predicted label index: {idx}")
+
+                    # log the prediction (use timestamp as input name)
+                    input_name = f"camera_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+                    log_prediction(input_name, name, prob)
+
                 except Exception as e:
                     st.error(f"Prediction error: {e}")
 
@@ -176,9 +213,12 @@ with tab3:
         "Images": list(class_counts.values())
     })
 
-    fig_bar = px.bar(df_counts, x="Class", y="Images", text="Images",
-                     color="Class", title="Number of Training Images per Class")
-    st.plotly_chart(fig_bar, use_container_width=True)
+    if not df_counts.empty:
+        fig_bar = px.bar(df_counts, x="Class", y="Images", text="Images",
+                         color="Class", title="Number of Training Images per Class")
+        st.plotly_chart(fig_bar, use_container_width=True)
+    else:
+        st.info("No classes found in dataset/ (place images in dataset/<class>/)")
 
     st.divider()
     st.subheader("🧠 Accuracy by Class (from Confusion Matrix)")
